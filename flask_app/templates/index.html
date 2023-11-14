@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-1"></div>    
+        <form class="col-md-3 js-register" action="/register" method="post">
+            <h2>REGISTER</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="">
+                <label for="first_name" class="form-label">First Name:</label>
+                <input type="text" class="form-control" name="first_name">
+            </div>
+            <div class="">
+                <label for="last_name" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" name="last_name">
+            </div>
+            <div class="">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="">
+                <label for="con_password" class="form-label">Confirm Password:</label>
+                <input type="password" class="form-control" name="con_password">
+            </div>
+            <button type="submit" class="btn btn-primary js-btn">Register</button>
+        </form>
+        <div class="col-md-1"></div>
+        <form class="col-md-3 js-login" action="/login" method="post">
+            <h2>LOGIN</h2>
+            <div class="">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary js-btn">Login</button>
+        </form>
+        <div class="col-md-1"></div> 
+    </div>
+    </div>
+</body>
+</html>

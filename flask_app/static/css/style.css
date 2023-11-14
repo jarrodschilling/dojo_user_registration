@@ -1,0 +1,18 @@
+.js-register {
+    background-color: rgb(10, 221, 221);
+    margin-left: 100px;
+    padding: 10px;
+    border:2px solid black;
+}
+
+.js-login {
+    background-color: rgb(10, 221, 221);
+    padding: 10px;
+    border:2px solid black;
+}
+
+.js-btn {
+    margin-top: 20px;
+    background-color: goldenrod;
+    border:2px solid black;
+}
