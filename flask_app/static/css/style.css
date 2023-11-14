@@ -1,6 +1,7 @@
 .js-register {
     background-color: rgb(10, 221, 221);
     margin-left: 100px;
+    margin-top: 25px;
     padding: 10px;
     border:2px solid black;
 }
@@ -8,6 +9,7 @@
 .js-login {
     background-color: rgb(10, 221, 221);
     padding: 10px;
+    margin-top: 25px;
     border:2px solid black;
 }
 

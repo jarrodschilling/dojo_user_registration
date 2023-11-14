@@ -41,24 +41,28 @@ class User:
             emails.append(email['email'])
         return emails
 
-    
-
     @staticmethod
     def validate_user(user):
         is_valid = True
         if len(user['first_name']) < 1:
-            flash("First name cannot be blank")
+            flash("First name cannot be blank", 'reg')
             is_valid = False
         if len(user['last_name']) < 1:
-            flash("Last name cannot be blank")
+            flash("Last name cannot be blank", 'reg')
             is_valid = False
         if not EMAIL_REGEX.match(user['email']):
-            flash("Invalid email format")
+            flash("Invalid email format", 'reg')
             is_valid = False
         if user['email'] in User.unique_email():
-            flash("Email already being used")
+            flash("Email already being used", 'reg')
+            is_valid = False
+        if re.search('[0-9]', user['password']) is None:
+            flash("Password must contain a number", 'reg')
+            is_valid = False
+        if re.search('[A-Z]', user['password']) is None:
+            flash("Password must contain a capital letter", 'reg')
             is_valid = False
         if user['password'] != user['con_password']:
-            flash("Passwords must match")
+            flash("Passwords must match", 'reg')
             is_valid = False
         return is_valid

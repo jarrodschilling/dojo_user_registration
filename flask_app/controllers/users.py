@@ -34,20 +34,24 @@ def login():
     user_in_db = User.get_user(data)
     print(user_in_db)
     if not user_in_db:
-        flash('Invalid Email/Password')
+        flash('Invalid Email/Password', 'login')
         return redirect('/')
     if not bcrypt.check_password_hash(user_in_db.password, request.form.get('password')):
-        flash('Invalid Email/Password')
+        flash('Invalid Email/Password', 'login')
         return redirect('/')
     
     session['user_id'] = user_in_db.id
+    session['first_name'] = user_in_db.first_name
 
     return redirect('/welcome')
 
 @app.route('/welcome')
 def welcome():
+    if 'user_id' not in session:
+        return redirect('/')
     return render_template('welcome.html')
 
 @app.route('/logout')
 def logout():
-    pass
+    session.clear()
+    return redirect('/')
